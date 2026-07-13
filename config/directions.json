@@ -1,0 +1,70 @@
+{
+  "directions": [
+    {
+      "name": "IT",
+      "code": "IT",
+      "subjects": [
+        "Informatika",
+        "Matematika"
+      ],
+      "skills": [
+        "Critical_Thinking",
+        "Creativity"
+      ],
+      "advice": "Informatika, matematika, algoritmik fikrlash va dasturlashni kuchaytirish."
+    },
+    {
+      "name": "Muhandislik",
+      "code": "ENG",
+      "subjects": [
+        "Matematika",
+        "Fizika",
+        "Texnologiya"
+      ],
+      "skills": [
+        "Adaptability",
+        "Teamwork"
+      ],
+      "advice": "Fizika, matematika, loyihalash va amaliy ko‘nikmalarni rivojlantirish."
+    },
+    {
+      "name": "Tibbiyot",
+      "code": "MED",
+      "subjects": [
+        "Biologiya",
+        "Kimyo"
+      ],
+      "skills": [
+        "Communication",
+        "Stability"
+      ],
+      "advice": "Biologiya, kimyo, mas’uliyat va akademik barqarorlikni kuchaytirish."
+    },
+    {
+      "name": "Iqtisodiyot",
+      "code": "ECO",
+      "subjects": [
+        "Matematika",
+        "Iqtisodiyot"
+      ],
+      "skills": [
+        "Leadership",
+        "Communication"
+      ],
+      "advice": "Moliyaviy savodxonlik, iqtisodiyot, mantiqiy fikrlash va liderlikni rivojlantirish."
+    },
+    {
+      "name": "Pedagogika",
+      "code": "PED",
+      "subjects": [
+        "Ona tili",
+        "Adabiyot"
+      ],
+      "skills": [
+        "Communication",
+        "Teamwork"
+      ],
+      "advice": "Kommunikativlik, jamoada ishlash, metodika va kreativlikni rivojlantirish."
+    }
+  ]
+}

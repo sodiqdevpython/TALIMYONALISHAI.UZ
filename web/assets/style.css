@@ -1,0 +1,167 @@
+:root{--bg:#f5f7fb;--card:#fff;--text:#162033;--muted:#65718a;--line:#e6eaf2;--brand:#2563eb;--brand2:#0f172a}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--text)}.container{max-width:1180px;margin:0 auto;padding:24px}header{padding:24px 0}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center}.nav a{display:inline-block;margin-left:8px;padding:10px 14px;background:#eef2ff;color:#1e3a8a;text-decoration:none;border-radius:10px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 8px 24px rgba(15,23,42,.05)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.stat span{display:block;color:var(--muted);font-size:14px}.stat strong{font-size:28px}button,.btn{border:0;background:var(--brand);color:white;padding:11px 16px;border-radius:10px;cursor:pointer;text-decoration:none;display:inline-block}.secondary{background:var(--brand2)}input[type=text],input[type=password],input[type=file]{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;margin:8px 0 12px}.inline{display:flex;gap:10px}.inline input{margin:0}table{width:100%;border-collapse:collapse;margin-top:10px}th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left}th{background:#f8fafc}.downloads a{display:inline-block;margin:6px 8px 6px 0;padding:9px 12px;background:#f1f5f9;border-radius:9px;text-decoration:none;color:#0f172a}.hint,.muted{color:var(--muted)}img.chart{max-width:100%;border:1px solid var(--line);border-radius:12px;background:white;padding:8px}.alert{padding:12px;border-radius:10px;background:#ecfeff;border:1px solid #a5f3fc}.error{background:#fef2f2;border-color:#fecaca}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#dbeafe;color:#1e40af;font-size:12px}@media(max-width:800px){.grid,.grid2{grid-template-columns:1fr}.inline{display:block}.topbar{display:block}.nav a{margin:5px 4px 0 0}}.bigrec{font-size:34px;font-weight:800;margin:10px 0;color:#0f172a}.badge+ .badge{margin-left:6px}pre{white-space:pre-wrap;overflow:auto}.card h2{margin-top:0}
+
+select{padding:11px;border:1px solid var(--line);border-radius:10px;background:white}
+.filters{display:grid;grid-template-columns:2fr 1fr auto auto;gap:10px;align-items:end}
+.table-wrap{overflow:auto;max-height:650px;border:1px solid var(--line);border-radius:12px}
+.mini{padding:6px 9px;background:#eef2ff;color:#1e3a8a;border-radius:8px;text-decoration:none;font-size:12px}
+.direction-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.dir-card{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:14px}
+.dir-card b{display:block}.dir-card strong{font-size:28px;display:block;margin:6px 0}.dir-card span{color:var(--muted)}
+.bar{height:9px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:#2563eb;border-radius:999px}
+.profile-head{display:flex;justify-content:space-between;gap:16px;align-items:stretch}
+.rec-box{min-width:300px;background:linear-gradient(135deg,#eff6ff,#fce7f3);border:1px solid #dbeafe;border-radius:18px;padding:18px;text-align:center}
+.rec-box span{display:block;color:#64748b}.rec-box strong{display:block;font-size:34px;margin:6px 0;color:#0f172a}.rec-box em{font-style:normal;color:#1e40af;font-weight:700}
+.prob-row{margin:12px 0}.prob-row span{font-weight:700}.prob-row b{float:right}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:12px}.metric span{display:block;color:#64748b;font-size:13px}.metric strong{font-size:20px}
+.advice{margin-top:14px;background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px;line-height:1.6}
+.err{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:10px;border-radius:10px}
+@media(max-width:900px){.direction-grid,.metric-grid,.filters{grid-template-columns:1fr}.profile-head{display:block}.rec-box{min-width:auto;margin-top:12px}}
+
+.timeline{display:flex;gap:10px;overflow:auto;padding:8px 0}
+.tl-item{min-width:95px;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;position:relative}
+.tl-item:after{content:"";position:absolute;right:-11px;top:50%;width:11px;height:2px;background:#cbd5e1}
+.tl-item:last-child:after{display:none}
+.tl-item span{display:block;color:#64748b;font-size:12px}.tl-item b{display:block;margin:5px 0;color:#0f172a}.tl-item em{font-style:normal;color:#2563eb;font-size:12px}
+.small-table{max-height:420px}
+
+.check{display:block;margin:8px 0}.check input{width:auto;margin-right:8px}
+
+
+/* Enterprise Build 0.3 Analytics UI */
+.enterprise .card{transition:.18s ease}.enterprise .card:hover{box-shadow:0 14px 34px rgba(15,23,42,.08);transform:translateY(-1px)}
+.stat small{display:block;color:#94a3b8;margin-top:4px}.stat.accent{background:linear-gradient(135deg,#eff6ff,#fff);border-color:#bfdbfe}.mini-dir{grid-template-columns:repeat(2,1fr)}
+canvas{max-width:100%}.profile-head{display:flex;gap:16px}.rec-box hr{border:0;border-top:1px solid #dbeafe;margin:16px 0}.enterprise .topbar h1{letter-spacing:-.03em}.enterprise h2{letter-spacing:-.02em}
+@media(max-width:900px){.mini-dir{grid-template-columns:1fr}.profile-head{display:block}}
+
+
+/* Enterprise Build 0.4 — Student Intelligence Center */
+.student-intel .passport-hero{display:grid;grid-template-columns:1.45fr .8fr;gap:16px;align-items:stretch;margin:16px 0}
+.identity-card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;gap:16px;align-items:center;box-shadow:0 8px 24px rgba(15,23,42,.05)}
+.avatar{width:78px;height:78px;border-radius:24px;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-size:34px;font-weight:900;flex:0 0 auto}
+.identity-card h2{margin:0 0 8px;font-size:28px}.identity-card p{margin:6px 0;color:#475569}
+.match-card{background:linear-gradient(135deg,#0f172a,#2563eb);border-radius:18px;padding:20px;color:white;box-shadow:0 10px 28px rgba(37,99,235,.25)}
+.match-card span{display:inline-block;background:rgba(255,255,255,.15);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em}
+.match-card strong{display:block;font-size:34px;margin:12px 0 4px}.match-card em{font-style:normal;font-size:42px;font-weight:900}.match-card p{color:#dbeafe}
+.gauge{height:12px;background:rgba(255,255,255,.22);border-radius:999px;overflow:hidden;margin:12px 0}.gauge i{display:block;height:100%;background:#22c55e;border-radius:999px}
+.sic-cards{grid-template-columns:repeat(4,1fr)}
+.skill-line{margin:13px 0}.skill-line span{font-weight:800}.skill-line b{float:right}.skill-line em{display:block;color:#f59e0b;font-style:normal;margin-top:5px;letter-spacing:2px}
+.ai-text{line-height:1.75;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:14px}
+.factor-list>div{margin:12px 0}.factor-list span{font-weight:800}.factor-list b{float:right}
+.smart-list{list-style:none;padding:0;margin:0}.smart-list li{padding:11px 12px;border:1px solid var(--line);border-radius:12px;margin:8px 0;background:#f8fafc}
+.smart-list li:before{content:"✓ ";color:#16a34a;font-weight:900}
+.roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.road-step{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}.road-step b{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#2563eb;color:white;margin-bottom:8px}.road-step span{display:block;font-weight:700}
+@media(max-width:900px){.student-intel .passport-hero,.sic-cards,.roadmap{grid-template-columns:1fr}.identity-card{display:block}.avatar{margin-bottom:12px}}
+
+
+/* Enterprise Build 0.5 — Teacher Intelligence Center */
+.assign-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.assign-card{display:block;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer}
+.assign-card input{width:auto;margin-right:8px}.assign-card b{display:block;margin-top:6px}.assign-card span{color:#64748b;font-size:13px}
+.class-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.class-card{display:block;background:linear-gradient(135deg,#ffffff,#eff6ff);border:1px solid #dbeafe;border-radius:16px;padding:18px;text-decoration:none;color:#0f172a;box-shadow:0 8px 22px rgba(15,23,42,.05)}
+.class-card b{display:block;font-size:26px}.class-card span,.class-card em{display:block;color:#64748b;margin-top:6px;font-style:normal}
+@media(max-width:900px){.assign-grid,.class-grid{grid-template-columns:1fr}}
+
+
+/* Enterprise Build 0.7 — AI Analytics Center */
+.analytics-hero{display:grid;grid-template-columns:1.1fr .7fr 1.2fr;gap:16px;margin:16px 0}
+.score-card{background:linear-gradient(135deg,#0f172a,#2563eb);border-radius:18px;padding:22px;color:white;box-shadow:0 14px 34px rgba(37,99,235,.22)}
+.score-card span{display:block;color:#dbeafe;font-weight:700}.score-card strong{font-size:58px;display:inline-block;line-height:1;margin:10px 0}.score-card em{font-style:normal;font-size:24px;color:#bfdbfe}.score-card p{color:#dbeafe}
+.warn{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:10px;margin:8px 0;color:#9a3412}
+@media(max-width:900px){.analytics-hero{grid-template-columns:1fr}}
+
+
+/* Enterprise Build 0.8 — AI Copilot & Smart Monitoring */
+.copilot-grid{display:grid;grid-template-columns:1.5fr .8fr;gap:16px;margin:16px 0}.copilot-main .ai-text{font-size:16px}
+.textarea{width:100%;min-height:120px;padding:14px;border:1px solid var(--line);border-radius:14px;font-family:inherit;margin:8px 0 12px}
+.risk-high,.risk-mid,.risk-low{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:800;font-size:12px}
+.risk-high{background:#fee2e2;color:#991b1b}.risk-mid{background:#fef3c7;color:#92400e}.risk-low{background:#dcfce7;color:#166534}
+@media(max-width:900px){.copilot-grid{grid-template-columns:1fr}}
+
+
+/* Enterprise Build 0.9 — EduDirectionAI GPT */
+.copilot-chat{display:grid;grid-template-columns:1.6fr .8fr;gap:16px}
+.chat-panel{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(15,23,42,.05)}
+.msg{padding:14px;border-radius:14px;margin:12px 0;line-height:1.6}.msg.ai{background:#f8fafc;border:1px solid #e2e8f0}.msg.user{background:#eff6ff;border:1px solid #bfdbfe;text-align:right}
+.chat-form{margin-top:12px}.quick{display:block;width:100%;text-align:left;background:#f8fafc;color:#0f172a;border:1px solid var(--line);border-radius:12px;padding:11px;margin:8px 0;cursor:pointer}
+.quick:hover{background:#eff6ff;border-color:#bfdbfe}
+@media(max-width:900px){.copilot-chat{grid-template-columns:1fr}}
+
+
+/* Enterprise Build 1.0 — Regional Intelligence & AI Lab */
+.bigrec{font-size:34px;font-weight:900;color:#0f172a;margin:8px 0}
+
+
+/* Enterprise 2.0 — AI Digital Twin */
+.risk-row{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0}
+
+
+/* Enterprise 3.0 — AI Future Simulation */
+.sim-hero{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.sim-alt{background:linear-gradient(135deg,#14532d,#2563eb)}
+.sim-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.sim-grid label{font-weight:700}.sim-grid input{margin-top:6px}
+.digital-twin-brain{background:linear-gradient(135deg,#ffffff,#eef2ff)}
+.brain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.brain-grid div{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:12px}
+@media(max-width:900px){.sim-hero,.sim-grid,.brain-grid{grid-template-columns:1fr}}
+
+/* Enterprise 3.1 — Prediction Isolation */
+.assign-card em,.class-card small{display:block;color:#64748b;font-size:12px;margin-top:6px;font-style:normal}
+.snapshot-note{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:12px;padding:12px;margin:12px 0}
+
+
+/* Enterprise Build 3.2 — Digital Twin Intelligence UI */
+.dt-timeline-card{overflow:hidden}
+.dt-timeline{display:flex;align-items:stretch;gap:14px;overflow-x:auto;padding:16px 4px 8px}
+.dt-step{min-width:118px;background:#f8fafc;border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center;position:relative;box-shadow:0 6px 18px rgba(15,23,42,.04)}
+.dt-step:not(:last-child)::after{content:"";position:absolute;top:50%;right:-15px;width:16px;height:2px;background:#cbd5e1}
+.dt-step span{display:block;color:#64748b;margin-bottom:8px}
+.dt-step b{display:block;font-size:17px;color:#0f172a;margin-bottom:8px}
+.dt-step em{font-style:normal;color:#2563eb;font-weight:800}
+.dt-analysis-card{margin-top:16px}
+.dt-analysis-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px}
+.dt-analysis-head h2{margin-bottom:4px}
+.dt-analysis-head p{margin:0;color:#64748b}
+.dt-analysis-grid{display:grid;grid-template-columns:.9fr 1.35fr;gap:18px}
+.dt-metrics{display:grid;gap:12px}
+.dt-metric{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:13px}
+.dt-metric span{font-weight:800}.dt-metric b{float:right}
+.dt-risk-pill{padding:10px 14px;border-radius:999px;font-weight:900;white-space:nowrap}
+.dt-explain{background:#f8fafc;border:1px solid var(--line);border-radius:16px;padding:16px}
+.dt-explain h3{margin-top:0}
+.risk-high{background:#fee2e2;color:#991b1b}
+.risk-mid{background:#fef3c7;color:#92400e}
+.risk-low{background:#dcfce7;color:#166534}
+@media(max-width:900px){
+    .dt-analysis-head{display:block}
+    .dt-risk-pill{display:inline-block;margin-top:12px}
+    .dt-analysis-grid{grid-template-columns:1fr}
+}
+
+
+/* Enterprise Build 3.3 — AI Event Timeline */
+.event-timeline{display:grid;gap:10px;margin-top:12px}
+.event-row{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:12px;background:#f8fafc}
+.event-row.risk-high{background:#fff1f2;border-color:#fecdd3;color:#7f1d1d}
+.event-row.risk-mid{background:#fffbeb;border-color:#fde68a;color:#78350f}
+.event-row.risk-low{background:#f0fdf4;border-color:#bbf7d0;color:#14532d}
+.event-grade b{display:block;color:inherit}.event-grade small{display:block;color:#64748b;margin-top:4px}
+.event-body strong{display:block;font-size:15px;margin-bottom:4px}.event-body span{color:#475569}
+@media(max-width:700px){.event-row{grid-template-columns:1fr}}
+
+/* Enterprise Build 4.1 — Unified Digital Twin */
+.dt-step small{display:block;margin-top:6px;color:#64748b;font-size:10px;line-height:1.2;max-width:105px;white-space:normal}
+
+
+/* Enterprise Build 4.2 — AI Governance */
+.required{color:#dc2626;font-weight:900}
+.upload-form{display:grid;gap:10px;max-width:560px}
+.upload-form input,.upload-form select{padding:12px;border:1px solid var(--line);border-radius:12px}
+.muted-row{opacity:.65;background:#f8fafc}
+.deleted-row{opacity:.45;background:#fee2e2}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.mini.danger{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+
+/* Enterprise Build 4.3 — Model Lifecycle */
+.active-row{background:#ecfdf5!important;border-left:4px solid #22c55e}
+td code{font-size:11px;white-space:pre-wrap}

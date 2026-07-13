@@ -1,0 +1,11 @@
+<?php require_once __DIR__.'/_helpers.php'; $rows=result_rows(); $class=trim($_GET['class']??'');
+$classes=[]; foreach($rows as $r){if(!empty($r['Sinf']))$classes[$r['Sinf']]=1;} ksort($classes);
+if($class===''){ $class=array_key_first($classes) ?: ''; }
+$subset=[]; foreach($rows as $r){ if(($r['Sinf']??'')===$class) $subset[]=$r; }
+$dirs=['IT','Muhandislik','Tibbiyot','Iqtisodiyot','Pedagogika']; $dist=array_fill_keys($dirs,0); foreach($subset as $r){$d=$r['recommended_direction']??''; if(isset($dist[$d]))$dist[$d]++;}
+?><!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/style.css"><title>Sinf kesimidagi tahlil</title></head><body><div class="container">
+<header class="topbar"><h1>Sinf kesimidagi tahlil</h1><nav class="nav"><a href="director_dashboard.php">Direktor dashboardi</a><a href="index.php">Bosh sahifa</a></nav></header>
+<section class="card"><form method="get" class="filters"><select name="class"><?php foreach(array_keys($classes) as $c): ?><option value="<?=h($c)?>" <?=$class===$c?'selected':''?>><?=h($c)?></option><?php endforeach; ?></select><button>Sinfni ko‘rish</button></form></section>
+<section class="card"><h2><?=h($class)?> bo‘yicha yo‘nalishlar</h2><div class="direction-grid"><?php foreach($dist as $d=>$n): $p=count($subset)?$n/count($subset)*100:0; ?><div class="dir-card"><b><?=h($d)?></b><strong><?=h($n)?></strong><span><?=number_format($p,1)?>%</span><div class="bar"><i style="width:<?=min(100,$p)?>%"></i></div></div><?php endforeach; ?></div></section>
+<section class="card"><h2>O‘quvchilar ro‘yxati</h2><div class="table-wrap"><table><thead><tr><th>F.I.O</th><th>ID</th><th>Tavsiya</th><th>Ishonch</th><th>Alternativ</th></tr></thead><tbody><?php foreach($subset as $r): ?><tr><td><a href="student.php?student_id=<?=urlencode($r['student_id']??'')?>"><?=h($r['FIO']??'')?></a></td><td><?=h($r['student_id']??'')?></td><td><?=h($r['recommended_direction']??'')?></td><td><?=pct($r['recommendation_confidence']??'')?></td><td><?=h($r['alternative_direction']??'')?> (<?=pct($r['alternative_confidence']??'')?>)</td></tr><?php endforeach; ?></tbody></table></div></section>
+</div></body></html>

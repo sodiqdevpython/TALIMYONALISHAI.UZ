@@ -1,0 +1,280 @@
+{
+  "version": "Professional v4.1",
+  "dataset": {
+    "students": 20000,
+    "features_used": 35,
+    "features": [
+      "academic_mean",
+      "academic_std",
+      "temporal_years_count",
+      "temporal_coverage_ratio",
+      "temporal_coverage_level",
+      "raw_model_confidence",
+      "growth_trend",
+      "learning_dynamics",
+      "academic_stability",
+      "temporal_consistency",
+      "skill_evolution",
+      "technical_academic_100",
+      "creative_academic_100",
+      "social_academic_100",
+      "practical_academic_100",
+      "science_academic_100",
+      "Communication",
+      "Teamwork",
+      "Leadership",
+      "Creativity",
+      "Critical_Thinking",
+      "Adaptability",
+      "certificates",
+      "SoftSkillScore",
+      "AnalyticalIndex",
+      "CreativeProfile",
+      "LeadershipScore",
+      "StabilityIndex",
+      "PracticalSkill",
+      "IT_Index",
+      "Engineering_Index",
+      "Medicine_Index",
+      "Economics_Index",
+      "Pedagogy_Index",
+      "cluster_id"
+    ],
+    "profiles": [
+      "IT",
+      "Muhandislik",
+      "Tibbiyot",
+      "Iqtisodiyot",
+      "Pedagogika"
+    ],
+    "directions": [
+      "IT",
+      "Iqtisodiyot",
+      "Muhandislik",
+      "Pedagogika",
+      "Tibbiyot"
+    ],
+    "classes": [
+      "11-sinf"
+    ],
+    "target_note": "Excelda target topilmasa, profil indekslari asosida pseudo-label yaratildi."
+  },
+  "feature_engineering": {
+    "feature_count": 35,
+    "temporal_features": [
+      "growth_trend",
+      "learning_dynamics",
+      "academic_stability",
+      "temporal_consistency",
+      "skill_evolution"
+    ],
+    "profile_indices": [
+      "IT_Index",
+      "Engineering_Index",
+      "Medicine_Index",
+      "Economics_Index",
+      "Pedagogy_Index"
+    ]
+  },
+  "clustering": {
+    "optimal_k": 5,
+    "selected_algorithm": "KMeans + GMM",
+    "kmeans_silhouette": 0.2565,
+    "kmeans_davies_bouldin": 1.2131,
+    "gmm_silhouette": 0.2249,
+    "gmm_davies_bouldin": 1.293,
+    "algorithm_comparison": {
+      "KMeans": {
+        "wcss": 24655.2257,
+        "silhouette": 0.2565,
+        "davies_bouldin": 1.2131
+      },
+      "GaussianMixture": {
+        "aic": 194364.8008,
+        "bic": 194791.5891,
+        "silhouette": 0.2249,
+        "davies_bouldin": 1.293,
+        "mean_probability": 0.8973,
+        "median_probability": 0.9658
+      }
+    },
+    "cluster_profile_map": {
+      "0": "Tibbiyot",
+      "1": "Muhandislik",
+      "2": "Pedagogika",
+      "3": "Iqtisodiyot",
+      "4": "IT"
+    },
+    "gmm_profile_map": {
+      "0": "Tibbiyot",
+      "1": "Muhandislik",
+      "2": "Pedagogika",
+      "3": "Iqtisodiyot",
+      "4": "IT"
+    },
+    "pca_explained_variance": [
+      0.8092,
+      0.106
+    ]
+  },
+  "classification": {
+    "best_model": "Logistic Regression",
+    "final_recommender": "Logistic Regression",
+    "model_results": {
+      "Logistic Regression": {
+        "accuracy": 0.9785,
+        "precision_macro": 0.9654,
+        "recall_macro": 0.986,
+        "f1_macro": 0.9753,
+        "roc_auc_ovr_macro": 0.9998
+      },
+      "Random Forest": {
+        "accuracy": 0.873,
+        "precision_macro": 0.8453,
+        "recall_macro": 0.8406,
+        "f1_macro": 0.8424,
+        "roc_auc_ovr_macro": 0.9834
+      },
+      "SVM": {
+        "accuracy": 0.9705,
+        "precision_macro": 0.9536,
+        "recall_macro": 0.9805,
+        "f1_macro": 0.9663
+      },
+      "Neural Network": {
+        "accuracy": 0.978,
+        "precision_macro": 0.9744,
+        "recall_macro": 0.9732,
+        "f1_macro": 0.9738,
+        "roc_auc_ovr_macro": 0.9994
+      },
+      "XGBoost": {
+        "accuracy": 0.8825,
+        "precision_macro": 0.8783,
+        "recall_macro": 0.8223,
+        "f1_macro": 0.8449,
+        "roc_auc_ovr_macro": 0.9873
+      }
+    },
+    "labels": [
+      "IT",
+      "Iqtisodiyot",
+      "Muhandislik",
+      "Pedagogika",
+      "Tibbiyot"
+    ],
+    "confusion_matrix": [
+      [
+        444,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        348,
+        0,
+        0,
+        0
+      ],
+      [
+        7,
+        2,
+        606,
+        0,
+        1
+      ],
+      [
+        0,
+        13,
+        1,
+        809,
+        0
+      ],
+      [
+        12,
+        12,
+        28,
+        9,
+        1707
+      ]
+    ],
+    "classification_report": {
+      "IT": {
+        "precision": 0.958963282937365,
+        "recall": 0.9977528089887641,
+        "f1-score": 0.9779735682819384,
+        "support": 445.0
+      },
+      "Iqtisodiyot": {
+        "precision": 0.925531914893617,
+        "recall": 1.0,
+        "f1-score": 0.9613259668508287,
+        "support": 348.0
+      },
+      "Muhandislik": {
+        "precision": 0.9543307086614173,
+        "recall": 0.9837662337662337,
+        "f1-score": 0.9688249400479616,
+        "support": 616.0
+      },
+      "Pedagogika": {
+        "precision": 0.988997555012225,
+        "recall": 0.982989064398542,
+        "f1-score": 0.9859841560024375,
+        "support": 823.0
+      },
+      "Tibbiyot": {
+        "precision": 0.9994145199063232,
+        "recall": 0.9654977375565611,
+        "f1-score": 0.9821634062140391,
+        "support": 1768.0
+      },
+      "accuracy": 0.9785,
+      "macro avg": {
+        "precision": 0.9654475962821895,
+        "recall": 0.9860011689420201,
+        "f1-score": 0.9752544074794409,
+        "support": 4000.0
+      },
+      "weighted avg": {
+        "precision": 0.9794003356987451,
+        "recall": 0.9785,
+        "f1-score": 0.9786164249988807,
+        "support": 4000.0
+      }
+    }
+  },
+  "recommendation": {
+    "method": "Logistic Regression probability argmax",
+    "formula": "Recommendation = argmax_j P(Y=j|X)",
+    "mean_confidence": 0.9534,
+    "median_confidence": 0.9999,
+    "min_confidence": 0.3344,
+    "max_confidence": 1.0,
+    "low_confidence_count": 1162,
+    "unclear_direction_count": 410
+  },
+  "director_dashboard": {
+    "top_students_count": 20,
+    "direction_distribution": {
+      "Tibbiyot": 8534,
+      "Pedagogika": 4090,
+      "Muhandislik": 3179,
+      "IT": 2313,
+      "Iqtisodiyot": 1884
+    },
+    "class_count": 1
+  },
+  "figures": [
+    "figures/pca_clusters.png",
+    "figures/confusion_matrix.png",
+    "figures/roc_auc.png",
+    "figures/feature_importance.png",
+    "figures/shap_summary.png",
+    "figures/model_comparison.png"
+  ],
+  "system_architecture": "Research Mode + Prediction Mode + Master Dataset + School Filtering + Adaptive Temporal Feature Engineering",
+  "method_note": "Datasetda haqiqiy yo'nalish labeli mavjud bo'lmasa, yo'nalishlar profil indekslari asosida pseudo-label sifatida shakllantirildi. Real label qo'shilsa, model supervised classification rejimida qayta o'qitiladi."
+}

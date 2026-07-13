@@ -1,0 +1,14 @@
+<?php session_start(); require_once __DIR__.'/_helpers.php';
+$school=null;
+if(isset($_GET['school_id'])){ foreach((schools_config()['schools']??[]) as $s){ if(($s['school_id']??'')===$_GET['school_id']){$school=$s;break;} } }
+if(!$school){ $school=current_school(); }
+if(!$school){ header('Location: school_login.php'); exit; }
+$rows=read_school_results($school['school_id']);
+$dirs=[]; foreach($rows as $r){$d=$r['recommended_direction']??''; if($d)$dirs[$d]=($dirs[$d]??0)+1;} arsort($dirs);
+?><!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/style.css"><title>Maktab dashboardi</title></head><body><div class="container">
+<header class="topbar"><div><h1><?=h($school['school_name'])?> <span class="badge"><?=h($school['school_id'])?></span></h1><p><?=h($school['region']??'')?> <?=h($school['district']??'')?> | Maktab kabineti</p></div><nav class="nav"><a href="prediction_mode.php">Dataset yuklash</a><a href="school_students.php?school_id=<?=urlencode($school['school_id'])?>">O‘quvchilar</a><a href="school_login.php?logout=1">Chiqish</a></nav></header>
+<?php if(!$rows): ?><section class="card"><h2>Hali natija yo‘q</h2><p>Avval Prediction Mode orqali maktab datasetini yuklang.</p><a class="btn" href="prediction_mode.php">Dataset yuklash</a></section><?php else: ?>
+<section class="grid"><div class="card stat"><span>O‘quvchilar</span><strong><?=count($rows)?></strong></div><div class="card stat"><span>Yo‘nalishlar</span><strong><?=count($dirs)?></strong></div><div class="card stat"><span>O‘rtacha ishonch</span><strong><?php $avg=array_sum(array_map(fn($r)=>(float)($r['recommendation_confidence']??0),$rows))/max(1,count($rows)); echo pct($avg); ?></strong></div><div class="card stat"><span>Maktab turi</span><strong><?=h($school['type']??'-')?></strong></div></section>
+<section class="card"><h2>Maktab bo‘yicha yo‘nalishlar</h2><div class="direction-grid"><?php foreach($dirs as $d=>$n): $p=count($rows)?$n/count($rows)*100:0; ?><div class="dir-card"><b><?=h($d)?></b><strong><?=h($n)?></strong><span><?=number_format($p,1)?>%</span><div class="bar"><i style="width:<?=min(100,$p)?>%"></i></div></div><?php endforeach; ?></div></section>
+<section class="card downloads"><h2>Hisobotlar</h2><a href="school_download.php?school_id=<?=urlencode($school['school_id'])?>&file=school_prediction_results.xlsx">Excel natijalar</a><a href="school_download.php?school_id=<?=urlencode($school['school_id'])?>&file=school_student_logins.xlsx">O‘quvchi loginlari</a><a href="school_students.php?school_id=<?=urlencode($school['school_id'])?>">O‘quvchilar jadvali</a></section>
+<?php endif; ?></div></body></html>

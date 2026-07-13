@@ -1,0 +1,21 @@
+{
+  "status": "ok",
+  "mode": "Prediction Mode",
+  "school_id": "DEMO-001",
+  "school_name": "Demo maktab",
+  "students": 99,
+  "mean_confidence": 0.965,
+  "temporal_coverage_mean": 1.0,
+  "directions": {
+    "Pedagogika": 44,
+    "Tibbiyot": 35,
+    "Muhandislik": 11,
+    "Iqtisodiyot": 8,
+    "IT": 1
+  },
+  "outputs": [
+    "school_prediction_results.xlsx",
+    "school_direction_summary.csv",
+    "school_student_logins.xlsx"
+  ]
+}

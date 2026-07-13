@@ -1,0 +1,15 @@
+<?php session_start(); require_once __DIR__.'/_helpers.php';
+if(empty($_SESSION['student_id'])){ header('Location: student_login.php'); exit; }
+$id=$_SESSION['student_id']; $row=null; foreach(result_rows() as $r){ if(($r['student_id']??'')===$id){$row=$r;break;} }
+$dirs=['IT','Muhandislik','Tibbiyot','Iqtisodiyot','Pedagogika'];
+?><!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/style.css"><title>Mening natijam</title></head><body><div class="container"><header class="topbar"><h1>Mening ta’lim yo‘nalishim</h1><nav class="nav"><a href="student_login.php?logout=1">Chiqish</a></nav></header><?php if($row): ?>
+<section class="card"><div class="profile-head"><div><p><b>F.I.O:</b> <?=h($row['FIO']??'')?></p><p><b>ID:</b> <?=h($row['student_id']??'')?></p><p><b>Sinf:</b> <?=h($row['Sinf']??'')?></p></div><div class="rec-box"><span>Yakuniy tavsiya</span><strong><?=h($row['recommended_direction']??'')?></strong><em><?=pct($row['recommendation_confidence']??'')?> ishonchlilik</em></div></div></section>
+<section class="card"><h2>5 ta yo‘nalish bo‘yicha moslik</h2><?php foreach($dirs as $d): $val=(float)($row['prob_'.$d] ?? 0)*100; ?><div class="prob-row"><span><?=h($d)?></span><b><?=number_format($val,2)?>%</b><div class="bar"><i style="width:<?=min(100,$val)?>%"></i></div></div><?php endforeach; ?></section>
+<section class="card"><h2>Qaysi ko‘rsatkichlar sabab bo‘ldi?</h2><p><?=h($row['recommendation_reason']??'')?></p><div class="metric-grid"><?php foreach(['AnalyticalIndex'=>'Analytical','CreativeProfile'=>'Creative','LeadershipScore'=>'Leadership','StabilityIndex'=>'Stability','PracticalSkill'=>'Practical'] as $k=>$v): ?><div class="metric"><span><?=h($v)?></span><strong><?=fmt($row[$k]??'')?></strong></div><?php endforeach; ?></div></section>
+
+<section class="card"><h2>Rivojlanish trayektoriyasi</h2>
+<?php $hist=[]; if(!empty($row['temporal_history'])){ $hist=json_decode($row['temporal_history'], true); if(!is_array($hist)) $hist=[]; } ?>
+<?php if($hist): ?><div class="timeline"><?php foreach($hist as $it): ?><div class="tl-item"><span><?=h(($it['grade']??'').'-sinf')?></span><b><?=h($it['direction']??'')?></b><em><?=h($it['year_mean']??'')?></em></div><?php endforeach; ?></div><?php endif; ?></section>
+
+<section class="card"><h2>Boshqa yo‘nalishni tanlasam nima qilishim kerak?</h2><form method="get"><?php foreach($dirs as $d): ?><button name="dir" value="<?=h($d)?>" class="<?=($_GET['dir']??'')===$d?'secondary':''?>"><?=h($d)?></button><?php endforeach; ?></form><?php $chosen=$_GET['dir']??($row['recommended_direction']??''); ?><div class="advice"><b><?=h($chosen)?></b>: <?=h(direction_advice_php($chosen))?></div></section>
+<?php else: ?><section class="card">Natija topilmadi.</section><?php endif; ?></div></body></html>

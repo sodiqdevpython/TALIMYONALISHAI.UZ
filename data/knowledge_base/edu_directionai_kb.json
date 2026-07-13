@@ -1,0 +1,69 @@
+{
+  "version": "0.9",
+  "directions": {
+    "Tibbiyot": {
+      "core_subjects": [
+        "Biologiya",
+        "Kimyo",
+        "Ingliz tili"
+      ],
+      "careers": [
+        "Shifokor",
+        "Farmatsevt",
+        "Laborant"
+      ],
+      "recommendation": "Laboratoriya mashg‘ulotlari va sog‘liqni saqlash amaliyotlarini kuchaytirish."
+    },
+    "IT": {
+      "core_subjects": [
+        "Matematika",
+        "Informatika",
+        "Ingliz tili"
+      ],
+      "careers": [
+        "Dasturchi",
+        "Data Analyst",
+        "AI mutaxassisi"
+      ],
+      "recommendation": "Python, algoritmlar va portfolio loyihalar."
+    },
+    "Muhandislik": {
+      "core_subjects": [
+        "Matematika",
+        "Fizika",
+        "Texnologiya"
+      ],
+      "careers": [
+        "Muhandis",
+        "Robototexnika mutaxassisi"
+      ],
+      "recommendation": "Texnik loyiha, fizika laboratoriyasi va chizmachilik."
+    },
+    "Iqtisodiyot": {
+      "core_subjects": [
+        "Matematika",
+        "Iqtisodiyot",
+        "Ingliz tili"
+      ],
+      "careers": [
+        "Iqtisodchi",
+        "Moliyachi",
+        "Biznes analyst"
+      ],
+      "recommendation": "Moliyaviy savodxonlik va data analytics."
+    },
+    "Pedagogika": {
+      "core_subjects": [
+        "Ona tili",
+        "Psixologiya",
+        "Kommunikatsiya"
+      ],
+      "careers": [
+        "O‘qituvchi",
+        "Metodist",
+        "EdTech mutaxassisi"
+      ],
+      "recommendation": "Nutq, metodika va bolalar bilan amaliy faoliyat."
+    }
+  }
+}

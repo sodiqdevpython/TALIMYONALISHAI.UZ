@@ -1,0 +1,7 @@
+<?php require_once __DIR__.'/_helpers.php'; $m=metrics(); ?>
+<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/style.css"><title>Master Dataset</title></head><body><div class="container">
+<header class="topbar"><h1>Master Dataset</h1><nav class="nav"><a href="research_mode.php">Research Mode</a><a href="dataset.php">Yakuniy jadval</a><a href="grades.php">1–11 baholar</a></nav></header>
+<section class="grid"><div class="card stat"><span>Master o‘quvchilar</span><strong><?=h($m['dataset']['students']??'-')?></strong></div><div class="card stat"><span>Featurelar</span><strong><?=h($m['dataset']['features_used']??'-')?></strong></div><div class="card stat"><span>Model</span><strong><?=h($m['classification']['final_recommender']??'-')?></strong></div><div class="card stat"><span>Versiya</span><strong><?=h($m['version']??'v4.0')?></strong></div></section>
+<section class="card downloads"><h2>Master fayllar</h2><a href="download.php?file=school_recommendations.xlsx">Master recommendations</a><a href="download.php?file=student_grade_history.xlsx">1–11 baholar</a><a href="download.php?file=metrics.json">Metrics JSON</a></section>
+<section class="card"><h2>Model ishlash tamoyili</h2><p><b>Research Mode</b> master dataset asosida modelni o‘qitadi. <b>Prediction Mode</b> esa shu tayyor model asosida yangi maktab datasetlarini qayta o‘qitmasdan tahlil qiladi.</p></section>
+</div></body></html>

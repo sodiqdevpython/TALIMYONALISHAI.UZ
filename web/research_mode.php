@@ -1,0 +1,6 @@
+<?php session_start(); require_once __DIR__.'/_helpers.php'; ?>
+<!doctype html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="assets/style.css"><title>Research Mode</title></head><body><div class="container">
+<header class="topbar"><div><h1>Research Mode <span class="badge">v4.0</span></h1><p>Master dataset asosida modelni o‘qitish va model.pkl fayllarini yaratish.</p></div><nav class="nav"><a href="index.php">Bosh sahifa</a><a href="prediction_mode.php">Prediction Mode</a><a href="master_dataset.php">Master Dataset</a></nav></header>
+<section class="card alert"><b>Diqqat:</b> Bu rejim modelni qayta o‘qitadi. Katta datasetda bir necha daqiqa vaqt olishi mumkin. Odatda faqat Super Admin ishlatadi.</section>
+<section class="card"><h2>Master modelni o‘qitish</h2><form action="run.php" method="post" enctype="multipart/form-data"><input type="hidden" name="mode" value="research"><label>Master dataset (.xlsx):</label><input type="file" name="dataset" accept=".xlsx"><button>Research Mode: modelni o‘qitish</button></form><p class="muted">Natijada <b>outputs/models/classification_pipeline.joblib</b> va <b>clustering_pipeline.joblib</b> saqlanadi.</p></section>
+</div></body></html>

@@ -1,0 +1,20 @@
+{
+  "schools": [
+    {
+      "school_id": "DEMO-001",
+      "school_name": "Demo maktab",
+      "region": "Sirdaryo",
+      "district": "Guliston",
+      "login": "demo_school",
+      "password": "school123",
+      "directions": [
+        "IT",
+        "Muhandislik",
+        "Tibbiyot",
+        "Iqtisodiyot",
+        "Pedagogika"
+      ],
+      "type": "Oddiy maktab"
+    }
+  ]
+}
