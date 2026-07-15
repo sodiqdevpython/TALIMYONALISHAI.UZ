@@ -24,25 +24,25 @@ services:
       - talimyo_net
 
   db:
-    image: mysql:8.0
+    # MariaDB — MySQL bilan to'liq mos, eski CPU'larda ham ishlaydi
+    # (mysql:8 x86-64-v2 talab qiladi, bu VPS uni qo'llamaydi).
+    image: mariadb:10.11
     container_name: talimyo_db
     restart: unless-stopped
-    # Hostga port CHIQARILMAYDI — GeomapGov yoki tizim MySQL 3306 bilan konflikt bo'lmaydi.
-    # Faqat ichki `talimyo_net` orqali `web` bilan ulanadi.
+    # Hostga port CHIQARILMAYDI — konflikt bo'lmaydi. Faqat `talimyo_net` ichida.
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:-changeme_root}
-      MYSQL_DATABASE: ${DB_NAME:-edudirectionai_db}
-      MYSQL_USER: ${DB_USER:-edudirectionai}
-      MYSQL_PASSWORD: ${DB_PASS:-changeme_app}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASS:-changeme_root}
+      MARIADB_DATABASE: ${DB_NAME:-edudirectionai_db}
+      MARIADB_USER: ${DB_USER:-edudirectionai}
+      MARIADB_PASSWORD: ${DB_PASS:-changeme_app}
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_general_ci
     volumes:
       - talimyo_db_data:/var/lib/mysql
-      # Faqat base .sql — mysql init subdir'larni ochmaydi, migrations entrypoint'da yuriladi
       - ./database/edudirectionai_v5_database.sql:/docker-entrypoint-initdb.d/00-base.sql:ro
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${DB_ROOT_PASS:-changeme_root}"]
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
       interval: 10s
       timeout: 5s
       retries: 20
