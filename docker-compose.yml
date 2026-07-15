@@ -1,0 +1,59 @@
+services:
+  web:
+    build: .
+    container_name: talimyo_web
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: ${DB_NAME:-edudirectionai_db}
+      DB_USER: ${DB_USER:-edudirectionai}
+      DB_PASS: ${DB_PASS:-changeme_app}
+      DB_ROOT_PASS: ${DB_ROOT_PASS:-changeme_root}
+    ports:
+      # HOST_PORT:CONTAINER_PORT — host portini .env orqali o'zgartiring, 8000 band bo'lsa 8081 default
+      - "${WEB_PORT:-8081}:80"
+    volumes:
+      - ./data:/var/www/html/data
+      - ./outputs:/var/www/html/outputs
+      - ./config:/var/www/html/config
+    networks:
+      - talimyo_net
+
+  db:
+    image: mysql:8.0
+    container_name: talimyo_db
+    restart: unless-stopped
+    # Hostga port CHIQARILMAYDI — GeomapGov yoki tizim MySQL 3306 bilan konflikt bo'lmaydi.
+    # Faqat ichki `talimyo_net` orqali `web` bilan ulanadi.
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:-changeme_root}
+      MYSQL_DATABASE: ${DB_NAME:-edudirectionai_db}
+      MYSQL_USER: ${DB_USER:-edudirectionai}
+      MYSQL_PASSWORD: ${DB_PASS:-changeme_app}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+    volumes:
+      - talimyo_db_data:/var/lib/mysql
+      # Faqat base .sql — mysql init subdir'larni ochmaydi, migrations entrypoint'da yuriladi
+      - ./database/edudirectionai_v5_database.sql:/docker-entrypoint-initdb.d/00-base.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${DB_ROOT_PASS:-changeme_root}"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    networks:
+      - talimyo_net
+
+networks:
+  talimyo_net:
+    name: talimyo_net
+    driver: bridge
+
+volumes:
+  talimyo_db_data:
+    name: talimyo_db_data

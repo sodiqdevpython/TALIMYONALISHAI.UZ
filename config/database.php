@@ -1,12 +1,13 @@
 <?php
 // EduDirectionAI Professional v5.0 — Database connection
 // XAMPP default: host=localhost, user=root, password=''
+// Docker rejimida qiymatlar DB_* env-lardan olinadi.
 
-define('DB_HOST', '127.0.0.1');
-define('DB_PORT', '3306');
-define('DB_NAME', 'edudirectionai_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
+define('DB_PORT', getenv('DB_PORT') ?: '3306');
+define('DB_NAME', getenv('DB_NAME') ?: 'edudirectionai_db');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
 
 function db(): PDO {
     static $pdo = null;
